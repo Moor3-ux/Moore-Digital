@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"C:/Users/moore/moore-digital-site/package.json\" \"C:/Users/moore/Moore-Digital/package.json\")",
+      "Bash(cp \"C:/Users/moore/moore-digital-site/vite.config.js\" \"C:/Users/moore/Moore-Digital/vite.config.js\")",
+      "Bash(cp \"C:/Users/moore/moore-digital-site/index.html\" \"C:/Users/moore/Moore-Digital/index.html\")",
+      "Bash(cp \"C:/Users/moore/moore-digital-site/eslint.config.js\" \"C:/Users/moore/Moore-Digital/eslint.config.js\")",
+      "Bash(cp -r \"C:/Users/moore/moore-digital-site/public\" \"C:/Users/moore/Moore-Digital/public\")",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

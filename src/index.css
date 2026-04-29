@@ -1,0 +1,4 @@
+/* All styles are handled by GlobalStyles in App.jsx */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; padding: 0; }
+#root { all: unset; display: block; }
