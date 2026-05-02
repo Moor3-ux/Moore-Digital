@@ -354,6 +354,19 @@ const GlobalStyles = () => (
       pointer-events: none;
     }
 
+    /* Quick process grid — responsive */
+    .quick-process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    @media (max-width: 768px) {
+      .quick-process-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Input styles */
     .form-input {
       width: 100%;
@@ -471,7 +484,7 @@ function Nav() {
 }
 
 /* ─────────────────────────────────────────
-   HERO
+   HERO SECTION
 ───────────────────────────────────────── */
 function Hero() {
   return (
@@ -482,28 +495,23 @@ function Hero() {
         minHeight: "100svh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-end",
-        padding: "0 48px 80px",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "120px 48px 80px",
         position: "relative",
         overflow: "hidden",
         background: "var(--bg)",
+        textAlign: "center",
       }}
     >
       {/* Ambient glow */}
-      <div className="hero-glow" style={{ top: "15%", left: "30%", transform: "translate(-50%,-50%)" }} />
-      <div className="hero-glow" style={{ top: "60%", right: "-10%", width: "400px", height: "400px", opacity: 0.5 }} />
+      <div className="hero-glow" style={{ top: "30%", left: "50%", transform: "translate(-50%,-50%)" }} />
+      <div className="hero-glow" style={{ top: "75%", left: "50%", transform: "translate(-50%,-50%)", width: "500px", height: "500px", opacity: 0.4 }} />
 
-      {/* Vertical accent line */}
-      <div style={{
-        position: "absolute", top: 0, right: "80px", width: "1px", height: "100%",
-        background: "linear-gradient(to bottom, var(--amber) 0%, transparent 55%)",
-        opacity: 0.15, pointerEvents: "none",
-      }} />
-
-      <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
+      <div style={{ maxWidth: "900px", width: "100%", position: "relative", zIndex: 2 }}>
 
         {/* Eyebrow */}
-        <div className="animate-fade-up delay-1" style={{ marginBottom: "28px" }}>
+        <div className="animate-fade-up delay-1" style={{ marginBottom: "28px", display: "flex", justifyContent: "center" }}>
           <span className="amber-badge">
             <span className="amber-badge-dot" />
             &#9889; 24&#8211;48 Hour Turnaround &#183; Now Accepting Projects
@@ -515,25 +523,20 @@ function Hero() {
           className="animate-fade-up delay-2"
           style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: "clamp(52px, 8.5vw, 128px)",
+            fontSize: "clamp(40px, 7vw, 100px)",
             fontWeight: 800,
-            lineHeight: 0.88,
+            lineHeight: 0.92,
             letterSpacing: "-0.04em",
             color: "#fff",
-            marginBottom: "32px",
-            maxWidth: "900px",
+            marginBottom: "28px",
           }}
         >
-          We Fix &amp; Build<br />
-          <span style={{ color: "var(--amber)" }}>Websites</span> That<br />
-          <span style={{
-            color: "transparent",
-            WebkitTextStroke: "2px rgba(255,255,255,0.22)",
-          }}>Actually Make</span><br />
-          You Money
+          We Fix and Build Websites That<br />
+          <span style={{ color: "var(--amber)" }}>Bring You More Customers</span><br />
+          <span style={{ color: "transparent", WebkitTextStroke: "2px rgba(255,255,255,0.22)" }}>— In 24 Hours.</span>
         </h1>
 
-        {/* Sub */}
+        {/* Subheadline */}
         <p
           className="animate-fade-up delay-3"
           style={{
@@ -541,27 +544,26 @@ function Hero() {
             fontWeight: 300,
             color: "rgba(255,255,255,0.55)",
             lineHeight: 1.75,
-            maxWidth: "520px",
-            marginBottom: "44px",
+            maxWidth: "580px",
+            margin: "0 auto 44px",
           }}
         >
-          Done-for-you website fixes, landing pages, speed optimization, and lead generation systems&#8202;&#8212;&#8202;
-          delivered <strong style={{ color: "#fff", fontWeight: 600 }}>fast</strong>, built to{" "}
-          <strong style={{ color: "#fff", fontWeight: 600 }}>convert</strong>.
+          Outdated site? Slow load times? Losing customers? We fix it fast so you can{" "}
+          <strong style={{ color: "#fff", fontWeight: 600 }}>focus on your business.</strong>
         </p>
 
         {/* CTAs */}
-        <div className="animate-fade-up delay-4" style={{ display: "flex", gap: "14px", flexWrap: "wrap", marginBottom: "56px" }}>
-          <a href="#contact" className="btn-amber" style={{ fontSize: "15px", padding: "17px 36px" }}>
-            Get Your Website Fixed Today &#8594;
+        <div className="animate-fade-up delay-4" style={{ display: "flex", gap: "14px", flexWrap: "wrap", justifyContent: "center", marginBottom: "56px" }}>
+          <a href="#contact" className="btn-amber" style={{ fontSize: "16px", padding: "18px 40px" }}>
+            Get Your Site Fixed Today &#8594;
           </a>
-          <a href="#results" className="btn-ghost">
-            View Results
+          <a href="#services" className="btn-ghost" style={{ fontSize: "16px", padding: "18px 32px" }}>
+            View What We Do
           </a>
         </div>
 
         {/* Trust pills */}
-        <div className="animate-fade-up delay-5" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+        <div className="animate-fade-up delay-5" style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}>
           {[
             { icon: "&#9889;", text: "24hr Delivery" },
             { icon: "&#128241;", text: "Mobile-First" },
@@ -574,6 +576,157 @@ function Hero() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────
+   NEW PROCESS SECTION
+───────────────────────────────────────── */
+function QuickProcessSection() {
+  const steps = [
+    {
+      icon: "&#128279;",
+      num: "01",
+      title: "Send Your Website",
+      desc: "We review your current site and identify what's costing you customers.",
+    },
+    {
+      icon: "&#9889;",
+      num: "02",
+      title: "We Fix It in 24–48 Hours",
+      desc: "Speed, mobile optimization, and clean design — done fast.",
+    },
+    {
+      icon: "&#128200;",
+      num: "03",
+      title: "You Get More Customers",
+      desc: "Better experience = more calls, bookings, and sales.",
+    },
+  ];
+
+  return (
+    <section style={{ background: "var(--bg2)", borderTop: "1px solid var(--border)", padding: "96px 48px 0" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+
+        {/* Header */}
+        <div className="reveal" style={{ textAlign: "center", marginBottom: "56px" }}>
+          <div className="section-label" style={{ justifyContent: "center", marginBottom: "16px" }}>How It Works</div>
+          <h2 style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "clamp(36px, 5vw, 64px)",
+            fontWeight: 800,
+            letterSpacing: "-0.04em",
+            lineHeight: 0.92,
+            color: "#fff",
+          }}>
+            Simple. Fast. <span style={{ color: "var(--amber)" }}>Effective.</span>
+          </h2>
+        </div>
+
+        {/* Steps grid */}
+        <div className="quick-process-grid">
+          {steps.map((s, i) => (
+            <div key={s.num} className="reveal" style={{
+              background: "var(--bg3)",
+              padding: "48px 40px",
+              position: "relative",
+              textAlign: "center",
+              animationDelay: `${i * 0.1}s`,
+            }}>
+              {/* Connector arrow — hidden on last */}
+              {i < 2 && (
+                <div style={{
+                  position: "absolute",
+                  top: "52px",
+                  right: "-13px",
+                  zIndex: 2,
+                  width: "26px",
+                  height: "26px",
+                  background: "var(--bg2)",
+                  border: "1px solid var(--border2)",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "11px",
+                  color: "var(--amber)",
+                }}>&#8594;</div>
+              )}
+
+              {/* Icon circle */}
+              <div style={{
+                width: "64px", height: "64px",
+                background: "rgba(240,180,41,0.08)",
+                border: "1px solid rgba(240,180,41,0.2)",
+                borderRadius: "50%",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "26px",
+                margin: "0 auto 20px",
+              }} dangerouslySetInnerHTML={{ __html: s.icon }} />
+
+              {/* Step number */}
+              <div style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: "10px",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--amber)",
+                marginBottom: "12px",
+              }}>Step {s.num}</div>
+
+              <h3 style={{
+                fontFamily: "'Syne', sans-serif",
+                fontSize: "22px",
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+                color: "#fff",
+                marginBottom: "12px",
+              }}>{s.title}</h3>
+
+              <p style={{
+                fontSize: "15px",
+                fontWeight: 300,
+                color: "rgba(255,255,255,0.5)",
+                lineHeight: 1.7,
+                maxWidth: "260px",
+                margin: "0 auto",
+              }}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── CTA SECTION ── */}
+      <div className="reveal" style={{
+        maxWidth: "780px",
+        margin: "72px auto 0",
+        padding: "64px 48px",
+        textAlign: "center",
+        position: "relative",
+      }}>
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "radial-gradient(ellipse 70% 100% at 50% 50%, rgba(240,180,41,0.06), transparent 70%)",
+          pointerEvents: "none",
+        }} />
+        <h2 style={{
+          fontFamily: "'Syne', sans-serif",
+          fontSize: "clamp(28px, 4vw, 48px)",
+          fontWeight: 800,
+          letterSpacing: "-0.03em",
+          color: "#fff",
+          marginBottom: "28px",
+          position: "relative",
+          zIndex: 1,
+        }}>
+          Get Your Website Fixed Today
+        </h2>
+        <a href="#contact" className="btn-amber" style={{ fontSize: "16px", padding: "18px 48px", position: "relative", zIndex: 1 }}>
+          Start Now &#8594;
+        </a>
       </div>
     </section>
   );
@@ -1477,6 +1630,7 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <QuickProcessSection />
         <ProblemSection />
         <ServicesSection />
         <ResultsSection />
