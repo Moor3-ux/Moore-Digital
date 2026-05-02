@@ -1184,7 +1184,7 @@ function CTASection() {
             <a href="#contact" className="btn-amber" style={{ fontSize: "16px", padding: "20px 44px" }}>
               Fix My Website Now &#8594;
             </a>
-            <a href="tel:5550000000" className="btn-ghost" style={{ fontSize: "16px", padding: "20px 28px" }}>
+            <a href="tel:4129446450" className="btn-ghost" style={{ fontSize: "16px", padding: "20px 28px" }}>
               &#128222; Call Now
             </a>
           </div>
@@ -1239,8 +1239,8 @@ function ContactSection() {
             {/* Contact items */}
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
               {[
-                { icon: "&#9993;", label: "Email", val: "hello@mooredigitalsolutions.com" },
-                { icon: "&#128222;", label: "Phone", val: "(555) 000-0000" },
+                { icon: "&#9993;", label: "Email", val: "info@mooreds.net" },
+                { icon: "&#128222;", label: "Phone", val: "(412)-944-6450" },
                 { icon: "&#9889;", label: "Response", val: "Within 2 hours" },
                 { icon: "&#127758;", label: "Service Area", val: "Worldwide — Remote" },
               ].map((c) => (
@@ -1410,7 +1410,7 @@ function Footer() {
             },
             {
               title: "Contact",
-              links: ["hello@mooredigitalsolutions.com", "(555) 000-0000", "Free Audit", "Book a Call"],
+              links: ["info@mooreds.net", "(412)-944-6450", "Free Audit", "Book a Call"],
             },
           ].map((col) => (
             <div key={col.title}>
