@@ -361,10 +361,96 @@ const GlobalStyles = () => (
       gap: 1px;
       background: var(--border);
     }
-    @media (max-width: 768px) {
-      .quick-process-grid {
-        grid-template-columns: 1fr;
-      }
+
+    /* ── HAMBURGER BUTTON ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE NAV MENU ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 24px 28px;
+      flex-direction: column;
+      z-index: 699;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+      letter-spacing: -0.02em;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:active { color: var(--amber); }
+
+    /* ── RESPONSIVE BREAKPOINTS ── */
+    @media (max-width: 860px) {
+      .main-nav  { padding: 0 20px !important; }
+      .nav-links { display: none !important; }
+      .nav-cta   { display: none !important; }
+      .hamburger { display: flex !important; }
+
+      .hero-section  { padding: 100px 20px 60px !important; }
+      .section-pad   { padding: 72px 20px !important; }
+      .quick-process-wrap { padding: 60px 20px 0 !important; }
+      .quick-cta-inner    { padding: 48px 20px !important; }
+      .contact-pad   { padding: 72px 20px !important; }
+      .footer-pad    { padding: 40px 20px 24px !important; }
+      .form-box      { padding: 36px 24px !important; }
+
+      .grid-2col  { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .grid-3col  { grid-template-columns: 1fr !important; }
+      .grid-4col  { grid-template-columns: 1fr 1fr !important; }
+      .form-2col  { grid-template-columns: 1fr !important; }
+
+      .sticky-col   { position: static !important; top: auto !important; }
+      .process-line { display: none !important; }
+      .results-row  { grid-template-columns: 1fr !important; }
+
+      .quick-process-grid { grid-template-columns: 1fr !important; }
+      .proc-step { padding: 32px 24px !important; }
+      .service-card { padding: 28px 24px !important; }
+
+      .pain-item { padding: 20px 0 !important; }
+
+      .result-metric { font-size: clamp(36px, 10vw, 52px) !important; }
+    }
+
+    @media (max-width: 540px) {
+      .grid-4col { grid-template-columns: 1fr !important; }
+      .footer-grid { grid-template-columns: 1fr !important; }
     }
 
     /* Input styles */
@@ -432,54 +518,76 @@ function Nav() {
     { label: "Contact", href: "#contact" },
   ];
 
+  const close = () => setMenuOpen(false);
+
   return (
-    <nav
-      style={{
-        position: "fixed",
-        top: 0, left: 0, right: 0,
-        zIndex: 700,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 48px",
-        height: "68px",
-        transition: "background 0.3s, border-color 0.3s",
-        borderBottom: "1px solid transparent",
-      }}
-      className={scrolled ? "nav-scrolled" : ""}
-    >
-      {/* Logo */}
-      <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
-        <div style={{
-          width: "34px", height: "34px",
-          background: "var(--amber)",
-          borderRadius: "6px",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "16px", color: "#000",
-        }}>M</div>
-        <span style={{ fontFamily: "'Syne', sans-serif", fontSize: "17px", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>
-          Moore<span style={{ color: "var(--amber)" }}>.</span>Digital
-        </span>
-      </a>
+    <>
+      <nav
+        className={`main-nav${scrolled ? " nav-scrolled" : ""}`}
+        style={{
+          position: "fixed",
+          top: 0, left: 0, right: 0,
+          zIndex: 700,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 48px",
+          height: "68px",
+          transition: "background 0.3s, border-color 0.3s",
+          borderBottom: "1px solid transparent",
+        }}
+      >
+        {/* Logo */}
+        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{
+            width: "34px", height: "34px",
+            background: "var(--amber)",
+            borderRadius: "6px",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "16px", color: "#000",
+          }}>M</div>
+          <span style={{ fontFamily: "'Syne', sans-serif", fontSize: "17px", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>
+            Moore<span style={{ color: "var(--amber)" }}>.</span>Digital
+          </span>
+        </a>
 
-      {/* Desktop links */}
-      <ul style={{ display: "flex", gap: "32px", listStyle: "none", margin: 0, padding: 0 }}
-        className="hidden-mobile">
+        {/* Desktop links */}
+        <ul className="nav-links" style={{ display: "flex", gap: "32px", listStyle: "none", margin: 0, padding: 0 }}>
+          {links.map((l) => (
+            <li key={l.label}>
+              <a href={l.href} style={{ fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.55)", textDecoration: "none", transition: "color 0.2s" }}
+                onMouseEnter={e => e.target.style.color = "#fff"}
+                onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.55)"}
+              >{l.label}</a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Right side */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <a href="#contact" className="btn-amber nav-cta" style={{ padding: "10px 22px", fontSize: "13px" }}>
+            Get a Free Audit &#8594;
+          </a>
+          <button
+            className={`hamburger${menuOpen ? " open" : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span /><span /><span />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile dropdown */}
+      <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
         {links.map((l) => (
-          <li key={l.label}>
-            <a href={l.href} style={{ fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.55)", textDecoration: "none", transition: "color 0.2s" }}
-              onMouseEnter={e => e.target.style.color = "#fff"}
-              onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.55)"}
-            >{l.label}</a>
-          </li>
+          <a key={l.label} href={l.href} onClick={close}>{l.label}</a>
         ))}
-      </ul>
-
-      {/* CTA */}
-      <a href="#contact" className="btn-amber" style={{ padding: "10px 22px", fontSize: "13px" }}>
-        Get a Free Audit &#8594;
-      </a>
-    </nav>
+        <a href="#contact" onClick={close} style={{ color: "var(--amber)" }}>
+          Get a Free Audit &#8594;
+        </a>
+      </div>
+    </>
   );
 }
 
@@ -490,7 +598,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="dot-grid scanlines"
+      className="dot-grid scanlines hero-section"
       style={{
         minHeight: "100svh",
         display: "flex",
@@ -607,7 +715,7 @@ function QuickProcessSection() {
   ];
 
   return (
-    <section style={{ background: "var(--bg2)", borderTop: "1px solid var(--border)", padding: "96px 48px 0" }}>
+    <section className="quick-process-wrap" style={{ background: "var(--bg2)", borderTop: "1px solid var(--border)", padding: "96px 48px 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
         {/* Header */}
@@ -699,7 +807,7 @@ function QuickProcessSection() {
       </div>
 
       {/* ── CTA SECTION ── */}
-      <div className="reveal" style={{
+      <div className="reveal quick-cta-inner" style={{
         maxWidth: "780px",
         margin: "72px auto 0",
         padding: "64px 48px",
@@ -766,6 +874,7 @@ function ProblemSection() {
   return (
     <section
       id="problem"
+      className="section-pad"
       style={{
         background: "var(--bg2)",
         padding: "120px 48px",
@@ -773,14 +882,14 @@ function ProblemSection() {
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{
+        <div className="grid-2col" style={{
           display: "grid",
           gridTemplateColumns: "1fr 1.4fr",
           gap: "80px",
           alignItems: "start",
         }}>
           {/* Left */}
-          <div className="reveal-l" style={{ position: "sticky", top: "100px" }}>
+          <div className="reveal-l sticky-col" style={{ position: "sticky", top: "100px" }}>
             <div className="section-label" style={{ marginBottom: "20px" }}>The Problem</div>
             <h2 style={{
               fontFamily: "'Syne', sans-serif",
@@ -912,7 +1021,7 @@ function ServicesSection() {
   ];
 
   return (
-    <section id="services" style={{ padding: "120px 48px", background: "var(--bg)" }}>
+    <section id="services" className="section-pad" style={{ padding: "120px 48px", background: "var(--bg)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "56px", flexWrap: "wrap", gap: "24px" }}>
@@ -937,7 +1046,7 @@ function ServicesSection() {
         </div>
 
         {/* Grid */}
-        <div style={{
+        <div className="grid-3col" style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           gap: "1px",
@@ -1048,7 +1157,7 @@ function ResultsSection() {
   ];
 
   return (
-    <section id="results" style={{ padding: "120px 48px", background: "var(--bg2)", borderTop: "1px solid var(--border)" }}>
+    <section id="results" className="section-pad" style={{ padding: "120px 48px", background: "var(--bg2)", borderTop: "1px solid var(--border)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
         {/* Header */}
@@ -1075,7 +1184,7 @@ function ResultsSection() {
         <div style={{ display: "flex", flexDirection: "column", gap: "1px", background: "var(--border)" }}>
           {caseStudies.map((cs, i) => (
             <div key={cs.industry} className="proof-card reveal" style={{ borderRadius: 0 }}>
-              <div style={{
+              <div className="results-row" style={{
                 display: "grid",
                 gridTemplateColumns: "200px 1fr 1fr auto",
                 gap: "0",
@@ -1148,7 +1257,7 @@ function ResultsSection() {
         </div>
 
         {/* Stats row */}
-        <div className="reveal" style={{
+        <div className="reveal grid-4col" style={{
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
           gap: "1px",
@@ -1207,10 +1316,10 @@ function ProcessSection() {
   ];
 
   return (
-    <section id="process" style={{ padding: "120px 48px", background: "var(--bg)", borderTop: "1px solid var(--border)" }}>
+    <section id="process" className="section-pad" style={{ padding: "120px 48px", background: "var(--bg)", borderTop: "1px solid var(--border)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "end", marginBottom: "72px" }}>
+        <div className="grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "end", marginBottom: "72px" }}>
           <div className="reveal">
             <div className="section-label" style={{ marginBottom: "16px" }}>04 / Process</div>
             <h2 style={{
@@ -1234,9 +1343,9 @@ function ProcessSection() {
         </div>
 
         {/* Steps */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "var(--border)", position: "relative" }}>
+        <div className="grid-3col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "var(--border)", position: "relative" }}>
           {/* Connecting line */}
-          <div style={{
+          <div className="process-line" style={{
             position: "absolute",
             top: "68px",
             left: "calc(16.6% + 12px)",
@@ -1289,7 +1398,7 @@ function ProcessSection() {
 ───────────────────────────────────────── */
 function CTASection() {
   return (
-    <section style={{
+    <section className="section-pad" style={{
       background: "var(--bg2)",
       padding: "120px 48px",
       borderTop: "1px solid var(--border)",
@@ -1386,9 +1495,9 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" style={{ padding: "120px 48px", background: "var(--bg)", borderTop: "1px solid var(--border)" }}>
+    <section id="contact" className="contact-pad" style={{ padding: "120px 48px", background: "var(--bg)", borderTop: "1px solid var(--border)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "80px", alignItems: "start" }}>
+        <div className="grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "80px", alignItems: "start" }}>
 
           {/* Left */}
           <div className="reveal-l">
@@ -1441,7 +1550,7 @@ function ContactSection() {
           </div>
 
           {/* Form */}
-          <div className="reveal" style={{
+          <div className="reveal form-box" style={{
             background: "var(--bg3)",
             border: "1px solid var(--border2)",
             borderRadius: "8px",
@@ -1470,7 +1579,7 @@ function ContactSection() {
                   We&#8217;ll review your site and send you a full breakdown of exactly what to fix &#8212; free, no strings.
                 </p>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
+                <div className="form-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
                   <div>
                     <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Name *</label>
                     <input type="text" required placeholder="Your Name" className="form-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
@@ -1481,7 +1590,7 @@ function ContactSection() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
+                <div className="form-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
                   <div>
                     <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Business Name</label>
                     <input type="text" placeholder="Your Business" className="form-input" value={form.business} onChange={e => setForm({ ...form, business: e.target.value })} />
@@ -1536,13 +1645,13 @@ function ContactSection() {
 ───────────────────────────────────────── */
 function Footer() {
   return (
-    <footer style={{
+    <footer className="footer-pad" style={{
       background: "var(--bg)",
       borderTop: "1px solid var(--border)",
       padding: "52px 48px 36px",
     }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{
+        <div className="footer-grid grid-4col" style={{
           display: "grid",
           gridTemplateColumns: "1.6fr 1fr 1fr 1fr",
           gap: "48px",
