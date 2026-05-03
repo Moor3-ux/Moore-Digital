@@ -1355,13 +1355,34 @@ function CTASection() {
    CONTACT SECTION
 ───────────────────────────────────────── */
 function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", url: "", service: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", business: "", website: "", service: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Replace with real form handler
-    setSent(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch(import.meta.env.VITE_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          business: form.business,
+          website: form.website,
+          message: `Service: ${form.service || "Not specified"}\n\n${form.message}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Server error");
+      setSent(true);
+    } catch {
+      setError("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -1460,9 +1481,15 @@ function ContactSection() {
                   </div>
                 </div>
 
-                <div style={{ marginBottom: "16px" }}>
-                  <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Website URL *</label>
-                  <input type="url" required placeholder="https://yoursite.com" className="form-input" value={form.url} onChange={e => setForm({ ...form, url: e.target.value })} />
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
+                  <div>
+                    <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Business Name</label>
+                    <input type="text" placeholder="Your Business" className="form-input" value={form.business} onChange={e => setForm({ ...form, business: e.target.value })} />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Website URL *</label>
+                    <input type="url" required placeholder="https://yoursite.com" className="form-input" value={form.website} onChange={e => setForm({ ...form, website: e.target.value })} />
+                  </div>
                 </div>
 
                 <div style={{ marginBottom: "16px" }}>
@@ -1484,9 +1511,14 @@ function ContactSection() {
                   <textarea rows={3} placeholder="Describe what's broken or what you want to improve..." className="form-input" style={{ resize: "vertical", minHeight: "90px" }} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
                 </div>
 
-                <button type="submit" className="btn-amber" style={{ width: "100%", justifyContent: "center", fontSize: "15px", padding: "18px" }}>
-                  Send My Free Audit Request &#8594;
+                <button type="submit" className="btn-amber" disabled={loading} style={{ width: "100%", justifyContent: "center", fontSize: "15px", padding: "18px", opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}>
+                  {loading ? "Sending…" : "Send My Free Audit Request ↗"}
                 </button>
+                {error && (
+                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#f87171", textAlign: "center", marginTop: "12px", letterSpacing: "0.03em" }}>
+                    {error}
+                  </p>
+                )}
                 <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "14px", letterSpacing: "0.04em" }}>
                   &#128274; 100% Private &nbsp;&#183;&nbsp; No Spam &nbsp;&#183;&nbsp; Reply Within 2 Hours
                 </p>
