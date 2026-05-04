@@ -538,17 +538,8 @@ function Nav() {
         }}
       >
         {/* Logo */}
-        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{
-            width: "34px", height: "34px",
-            background: "var(--amber)",
-            borderRadius: "6px",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "16px", color: "#000",
-          }}>M</div>
-          <span style={{ fontFamily: "'Syne', sans-serif", fontSize: "17px", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>
-            Moore<span style={{ color: "var(--amber)" }}>.</span>Digital
-          </span>
+        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+          <img src="/logo.png" alt="Moore Digital Solutions" style={{ height: "52px", width: "auto" }} />
         </a>
 
         {/* Desktop links */}
@@ -1660,15 +1651,8 @@ function Footer() {
         }}>
           {/* Brand */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
-              <div style={{
-                width: "34px", height: "34px", background: "var(--amber)", borderRadius: "6px",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "16px", color: "#000",
-              }}>M</div>
-              <span style={{ fontFamily: "'Syne', sans-serif", fontSize: "17px", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>
-                Moore<span style={{ color: "var(--amber)" }}>.</span>Digital
-              </span>
+            <div style={{ marginBottom: "16px" }}>
+              <img src="/logo.png" alt="Moore Digital Solutions" style={{ height: "64px", width: "auto" }} />
             </div>
             <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: "260px", marginBottom: "24px", fontWeight: 300 }}>
               Fast, high-converting websites for businesses that can&#8217;t afford to wait. Fixes in 24 hours. Builds in 48. Results guaranteed.
