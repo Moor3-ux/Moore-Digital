@@ -848,25 +848,25 @@ function ProblemSection() {
     {
       num: "01",
       title: "Your website looks like it was built in 2014",
-      desc: "Outdated design destroys trust instantly. Visitors make a judgement in under 3 seconds &#8212; and an old, clunky site tells them you don&#8217;t take your business seriously.",
+      desc: "Outdated design loses trust in seconds. If your site looks old, customers assume you&#8217;re out of business.",
       impact: "68% of users won&#8217;t return after a bad first impression.",
     },
     {
       num: "02",
       title: "It loads so slowly people leave before seeing anything",
-      desc: "Every second of load time costs you customers. A 1-second delay reduces conversions by 7%. If your site takes 5+ seconds, most visitors are already gone.",
+      desc: "Every second of load time costs you customers. Slow sites don&#8217;t get second chances.",
       impact: "53% of mobile users abandon sites that take over 3 seconds.",
     },
     {
       num: "03",
       title: "On mobile it looks completely broken",
-      desc: "Over 60% of web traffic is mobile. If your site isn&#8217;t perfectly responsive, you&#8217;re turning away the majority of your potential customers before they even read a word.",
+      desc: "Over 60% of your traffic is on a phone. A broken mobile site means lost customers before they read a word.",
       impact: "61% of mobile users won&#8217;t return to a site with mobile issues.",
     },
     {
       num: "04",
       title: "There&#8217;s no clear reason to contact you",
-      desc: "Visitors land, feel nothing, and leave. No compelling headline, no clear CTA, no trust signals. Great traffic wasted. Your site isn&#8217;t a passive brochure &#8212; it needs to actively sell.",
+      desc: "No clear call-to-action means visitors leave without contacting you. Your site needs to sell, not just sit there.",
       impact: "Websites without a clear CTA lose up to 40% of potential leads.",
     },
   ];
@@ -905,7 +905,7 @@ function ProblemSection() {
               <span style={{ color: "transparent", WebkitTextStroke: "1.5px rgba(255,255,255,0.2)" }}>Every Day</span>
             </h2>
             <p style={{ fontSize: "16px", fontWeight: 300, color: "rgba(255,255,255,0.5)", lineHeight: 1.75, marginBottom: "32px" }}>
-              Most business websites are leaking money. They&#8217;re slow, outdated, and impossible to use on a phone. Every day that goes unfixed is a day your competitors are taking your customers.
+              Your site is either making you money or costing you customers. There&#8217;s no middle ground.
             </p>
             <div style={{
               background: "rgba(240,180,41,0.07)",
@@ -915,7 +915,7 @@ function ProblemSection() {
             }}>
               <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--amber)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>Bottom Line</div>
               <div style={{ fontSize: "15px", fontWeight: 500, color: "#fff", lineHeight: 1.6 }}>
-                A bad website isn&#8217;t just embarrassing &#8212; it&#8217;s actively driving potential customers to your competitors.
+                A bad website isn&#8217;t just embarrassing &#8212; it&#8217;s sending customers straight to your competitors.
               </div>
             </div>
           </div>
@@ -974,7 +974,7 @@ function ServicesSection() {
       icon: "&#9889;",
       label: "24-Hour Fix",
       name: "Website Fixes & Repairs",
-      desc: "Broken layouts, dead links, form failures, visual bugs, CMS issues &#8212; we diagnose and fix fast. Send us your site and get a working, polished website back by tomorrow.",
+      desc: "Something&#8217;s broken and it&#8217;s costing you customers. We find it, fix it, and hand it back by tomorrow.",
       outcome: "Stop losing customers to a broken site. Fixed in 24 hours, guaranteed.",
       badge: "Most Popular",
     },
@@ -982,7 +982,7 @@ function ServicesSection() {
       icon: "&#128640;",
       label: "48-Hour Build",
       name: "Landing Page Builds",
-      desc: "High-converting landing pages built from scratch. Optimized copy structure, mobile-first design, integrated lead capture &#8212; purpose-built to turn traffic into leads and sales.",
+      desc: "A focused page built to turn visitors into leads &#8212; done in 48 hours.",
       outcome: "A page that actually converts visitors into paying customers.",
       badge: null,
     },
@@ -990,23 +990,23 @@ function ServicesSection() {
       icon: "&#128241;",
       label: "Mobile & Speed",
       name: "Mobile Optimization",
-      desc: "We audit every breakpoint, fix responsive issues, and make your site look flawless on every device. Because 60% of your traffic is on a phone and you can&#8217;t afford to lose them.",
-      outcome: "Perfect mobile experience. No more pinching, zooming, or frustrated exits.",
+      desc: "We make your site look perfect on every phone and device. No exceptions.",
+      outcome: "60% of your traffic is on mobile. Now it won&#8217;t leave.",
       badge: null,
     },
     {
       icon: "&#9889;&#65039;",
       label: "Performance",
       name: "Speed Optimization",
-      desc: "We compress images, eliminate render-blocking resources, enable caching, and streamline your code. Average result: sub-2-second load times and a 40+ point PageSpeed jump.",
-      outcome: "Faster site, higher rankings, lower bounce rate, more conversions.",
+      desc: "We make your site load in under 2 seconds. Faster sites rank higher and close more.",
+      outcome: "Faster site, better rankings, more conversions.",
       badge: null,
     },
     {
       icon: "&#127919;",
       label: "Lead Systems",
       name: "Lead Generation Setup",
-      desc: "We install and configure lead capture systems &#8212; forms, popups, chatbots, email sequences &#8212; so your website is actively working to build your list and fill your pipeline.",
+      desc: "We set up forms and capture systems so your site brings in leads automatically.",
       outcome: "Wake up to new leads in your inbox. Automated, 24/7.",
       badge: null,
     },
@@ -1014,8 +1014,8 @@ function ServicesSection() {
       icon: "&#128269;",
       label: "Full Audit",
       name: "Website Audit & Strategy",
-      desc: "A comprehensive analysis of your site&#8217;s design, speed, SEO foundations, conversion rate, and user experience. Get a prioritized action plan with exactly what to fix first.",
-      outcome: "A clear roadmap to a website that actually works for your business.",
+      desc: "We review your site and tell you exactly what&#8217;s hurting your business &#8212; free.",
+      outcome: "A clear action plan. Know what to fix and in what order.",
       badge: "Free Intro Offer",
     },
   ];
@@ -1176,7 +1176,7 @@ function ResultsSection() {
             <span style={{ color: "var(--amber)" }}>Measurable Results.</span>
           </h2>
           <p style={{ fontSize: "17px", fontWeight: 300, color: "rgba(255,255,255,0.5)", maxWidth: "500px", margin: "0 auto", lineHeight: 1.75 }}>
-            Here&#8217;s what happens when a business stops tolerating a website that doesn&#8217;t work.
+            Real results from real businesses. No fluff.
           </p>
         </div>
 
@@ -1296,22 +1296,22 @@ function ProcessSection() {
       n: "01",
       time: "Takes you 5 minutes",
       title: "Send Us Your Website",
-      desc: "Fill out our quick form with your website URL, what you need fixed or built, and your deadline. That&#8217;s it. No lengthy discovery calls. No back-and-forth questionnaires.",
-      detail: "We review your site within 2 hours and confirm scope + timeline.",
+      desc: "Fill out a quick form with your URL and what needs fixing. No calls, no questionnaires.",
+      detail: "We review your site within 2 hours and confirm scope + price.",
     },
     {
       n: "02",
       time: "We handle everything",
       title: "We Fix or Build It Fast",
-      desc: "Our team gets to work immediately. Fixes in 24 hours. Full builds in 48 hours. You don&#8217;t need to explain web development to us or manage the project. We just do it.",
-      detail: "You get progress updates and a preview before we go live.",
+      desc: "We get to work immediately. Fixes in 24 hours. Full builds in 48 hours. No check-ins needed.",
+      detail: "You get a preview before anything goes live.",
     },
     {
       n: "03",
       time: "Your business grows",
       title: "You Get More Customers",
-      desc: "Your new site goes live. Faster, better-looking, mobile-perfect, and built to convert. You focus on running your business while your website does the heavy lifting.",
-      detail: "We include 30 days of support after delivery for any tweaks.",
+      desc: "Your site goes live &#8212; faster, cleaner, and built to bring in customers.",
+      detail: "30 days of support included after delivery.",
     },
   ];
 
@@ -1338,7 +1338,7 @@ function ProcessSection() {
           <p className="reveal" style={{
             fontSize: "17px", fontWeight: 300, color: "rgba(255,255,255,0.5)", lineHeight: 1.75, alignSelf: "flex-end",
           }}>
-            We&#8217;ve stripped out every unnecessary step. No bloated discovery phase, no six-week timelines, no endless revisions. Just fast, focused execution that gets results.
+            No lengthy contracts. No back-and-forth. Just fast execution and a working site.
           </p>
         </div>
 
@@ -1439,7 +1439,7 @@ function CTASection() {
             fontSize: "18px", fontWeight: 300, color: "rgba(255,255,255,0.55)",
             lineHeight: 1.75, marginBottom: "44px",
           }}>
-            Don&#8217;t let another week of lost customers go by. Send us your website today and get a fixed, fast, high-converting site back by tomorrow.
+            Don&#8217;t lose another customer to a bad website. Send it to us today &#8212; we&#8217;ll fix it by tomorrow.
           </p>
 
           <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginBottom: "24px" }}>
@@ -1516,7 +1516,7 @@ function ContactSection() {
               <span style={{ color: "transparent", WebkitTextStroke: "1.5px rgba(255,255,255,0.2)" }}>Today</span>
             </h2>
             <p style={{ fontSize: "16px", fontWeight: 300, color: "rgba(255,255,255,0.5)", lineHeight: 1.75, marginBottom: "44px" }}>
-              Tell us about your website and what you need. We respond within 2 hours with a plan and a fixed price &#8212; no vague quotes, no hourly surprises.
+              Tell us what&#8217;s broken. We respond within 2 hours with a fixed price &#8212; no vague quotes, no surprises.
             </p>
 
             {/* Contact items */}
