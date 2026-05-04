@@ -539,7 +539,7 @@ function Nav() {
       >
         {/* Logo */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-          <img src="/logo.png" alt="Moore Digital Solutions" style={{ height: "40px", width: "auto" }} />
+          <img src="/logo.png" alt="Moore Digital Solutions" style={{ height: "56px", width: "auto" }} />
         </a>
 
         {/* Desktop links */}
