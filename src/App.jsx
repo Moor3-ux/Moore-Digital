@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 
 /* ─────────────────────────────────────────
    INJECT FONTS + GLOBAL STYLES
@@ -19,11 +19,11 @@ const GlobalStyles = () => (
       --text:    #ffffff;
       --muted:   #888899;
       --dim:     #555566;
-      --amber:   #F0B429;
-      --amber-l: #FFD060;
-      --amber-d: #C48C0A;
-      --amber-bg:rgba(240,180,41,0.08);
-      --amber-glow:rgba(240,180,41,0.25);
+      --amber:   #2563EB;
+      --amber-l: #60A5FA;
+      --amber-d: #1D4ED8;
+      --amber-bg:rgba(37,99,235,0.08);
+      --amber-glow:rgba(37,99,235,0.25);
       --green:   #22C55E;
     }
 
@@ -55,7 +55,7 @@ const GlobalStyles = () => (
       position: absolute;
       width: 700px;
       height: 700px;
-      background: radial-gradient(circle, rgba(240,180,41,0.12) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 65%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -117,7 +117,7 @@ const GlobalStyles = () => (
       align-items: center;
       gap: 8px;
       background: var(--amber);
-      color: #000;
+      color: #fff;
       font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       font-weight: 700;
@@ -134,7 +134,7 @@ const GlobalStyles = () => (
     .btn-amber:hover {
       background: var(--amber-l);
       transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(240,180,41,0.4);
+      box-shadow: 0 16px 40px rgba(37,99,235,0.4);
     }
     .btn-amber:active { transform: translateY(0); }
 
@@ -182,7 +182,7 @@ const GlobalStyles = () => (
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
     }
     .service-card:hover {
-      border-color: rgba(240,180,41,0.2);
+      border-color: rgba(37,99,235,0.2);
       background: var(--bg4);
       transform: translateY(-4px);
     }
@@ -197,7 +197,7 @@ const GlobalStyles = () => (
       transition: border-color 0.3s, transform 0.3s cubic-bezier(0.16,1,0.3,1);
     }
     .proof-card:hover {
-      border-color: rgba(240,180,41,0.2);
+      border-color: rgba(37,99,235,0.2);
       transform: translateY(-4px);
     }
 
@@ -244,7 +244,7 @@ const GlobalStyles = () => (
       position: absolute;
       left: 0; top: 0; bottom: 0;
       width: 0;
-      background: linear-gradient(90deg, rgba(240,180,41,0.06), transparent);
+      background: linear-gradient(90deg, rgba(37,99,235,0.06), transparent);
       transition: width 0.35s cubic-bezier(0.16,1,0.3,1);
     }
     .pain-item:first-child { border-top: 1px solid var(--border); }
@@ -261,7 +261,7 @@ const GlobalStyles = () => (
       overflow: hidden;
       transition: border-color 0.3s;
     }
-    .proc-step:hover { border-color: rgba(240,180,41,0.2); }
+    .proc-step:hover { border-color: rgba(37,99,235,0.2); }
 
     /* Stats bar */
     .stat-bar-fill {
@@ -294,8 +294,8 @@ const GlobalStyles = () => (
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(240,180,41,0.1);
-      border: 1px solid rgba(240,180,41,0.3);
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.3);
       color: var(--amber);
       font-family: 'DM Mono', monospace;
       font-size: 11px;
@@ -326,7 +326,7 @@ const GlobalStyles = () => (
       color: rgba(255,255,255,0.7);
       transition: border-color 0.2s, color 0.2s;
     }
-    .trust-pill:hover { border-color: rgba(240,180,41,0.25); color: #fff; }
+    .trust-pill:hover { border-color: rgba(37,99,235,0.25); color: #fff; }
 
     /* Result metric */
     .result-metric {
@@ -350,7 +350,7 @@ const GlobalStyles = () => (
     .cta-glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(240,180,41,0.08), transparent 65%);
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(37,99,235,0.08), transparent 65%);
       pointer-events: none;
     }
 
@@ -468,8 +468,8 @@ const GlobalStyles = () => (
     }
     .form-input::placeholder { color: var(--dim); }
     .form-input:focus {
-      border-color: rgba(240,180,41,0.45);
-      box-shadow: 0 0 0 3px rgba(240,180,41,0.08);
+      border-color: rgba(37,99,235,0.45);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
     }
   `}</style>
 );
@@ -539,7 +539,7 @@ function Nav() {
       >
         {/* Logo */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-          <img src="/logo.png" alt="Moore Digital Solutions" style={{ height: "52px", width: "auto" }} />
+          <img src="/logo.png" alt="Moore Digital Solutions" style={{ height: "40px", width: "auto" }} />
         </a>
 
         {/* Desktop links */}
@@ -757,8 +757,8 @@ function QuickProcessSection() {
               {/* Icon circle */}
               <div style={{
                 width: "64px", height: "64px",
-                background: "rgba(240,180,41,0.08)",
-                border: "1px solid rgba(240,180,41,0.2)",
+                background: "rgba(37,99,235,0.08)",
+                border: "1px solid rgba(37,99,235,0.2)",
                 borderRadius: "50%",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: "26px",
@@ -808,7 +808,7 @@ function QuickProcessSection() {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "radial-gradient(ellipse 70% 100% at 50% 50%, rgba(240,180,41,0.06), transparent 70%)",
+          background: "radial-gradient(ellipse 70% 100% at 50% 50%, rgba(37,99,235,0.06), transparent 70%)",
           pointerEvents: "none",
         }} />
         <h2 style={{
@@ -899,8 +899,8 @@ function ProblemSection() {
               Your site is either making you money or costing you customers. There&#8217;s no middle ground.
             </p>
             <div style={{
-              background: "rgba(240,180,41,0.07)",
-              border: "1px solid rgba(240,180,41,0.2)",
+              background: "rgba(37,99,235,0.07)",
+              border: "1px solid rgba(37,99,235,0.2)",
               borderRadius: "8px",
               padding: "20px 24px",
             }}>
@@ -1050,16 +1050,16 @@ function ServicesSection() {
                   position: "absolute", top: "18px", right: "18px",
                   fontFamily: "'DM Mono', monospace", fontSize: "9px", fontWeight: 500,
                   letterSpacing: "0.1em", textTransform: "uppercase",
-                  background: "rgba(240,180,41,0.12)", color: "var(--amber)",
-                  border: "1px solid rgba(240,180,41,0.25)",
+                  background: "rgba(37,99,235,0.12)", color: "var(--amber)",
+                  border: "1px solid rgba(37,99,235,0.25)",
                   padding: "3px 10px", borderRadius: "4px",
                 }}>{s.badge}</div>
               )}
               <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
                 <div style={{
                   width: "48px", height: "48px",
-                  background: "rgba(240,180,41,0.08)",
-                  border: "1px solid rgba(240,180,41,0.15)",
+                  background: "rgba(37,99,235,0.08)",
+                  border: "1px solid rgba(37,99,235,0.15)",
                   borderRadius: "10px",
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontSize: "22px",
@@ -1342,7 +1342,7 @@ function ProcessSection() {
             left: "calc(16.6% + 12px)",
             right: "calc(16.6% + 12px)",
             height: "1px",
-            background: "linear-gradient(90deg, var(--amber) 0%, rgba(240,180,41,0.15) 100%)",
+            background: "linear-gradient(90deg, var(--amber) 0%, rgba(37,99,235,0.15) 100%)",
             zIndex: 0,
           }} />
 
@@ -1357,9 +1357,9 @@ function ProcessSection() {
                 fontFamily: "'DM Mono', monospace", fontSize: "16px", fontWeight: 500,
                 color: "var(--amber)",
                 marginBottom: "28px",
-                boxShadow: "0 0 24px rgba(240,180,41,0.2)",
+                boxShadow: "0 0 24px rgba(37,99,235,0.2)",
               }}>{s.n}</div>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(240,180,41,0.65)", marginBottom: "12px" }}>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(37,99,235,0.65)", marginBottom: "12px" }}>
                 {s.time}
               </div>
               <h3 style={{
@@ -1525,8 +1525,8 @@ function ContactSection() {
                 }}>
                   <div style={{
                     width: "40px", height: "40px",
-                    background: "rgba(240,180,41,0.07)",
-                    border: "1px solid rgba(240,180,41,0.15)",
+                    background: "rgba(37,99,235,0.07)",
+                    border: "1px solid rgba(37,99,235,0.15)",
                     borderRadius: "8px",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: "16px", flexShrink: 0,
@@ -1669,7 +1669,7 @@ function Footer() {
                   textDecoration: "none",
                   transition: "border-color 0.2s, color 0.2s",
                 }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(240,180,41,0.4)"; e.currentTarget.style.color = "var(--amber)"; }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(37,99,235,0.4)"; e.currentTarget.style.color = "var(--amber)"; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border2)"; e.currentTarget.style.color = "rgba(255,255,255,0.35)"; }}
                 >{s}</a>
               ))}
@@ -1767,3 +1767,4 @@ export default function App() {
     </>
   );
 }
+
