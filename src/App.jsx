@@ -5,7 +5,7 @@
 ───────────────────────────────────────── */
 const GlobalStyles = () => (
   <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -32,7 +32,7 @@ const GlobalStyles = () => (
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
@@ -118,7 +118,7 @@ const GlobalStyles = () => (
       gap: 8px;
       background: var(--amber);
       color: #fff;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 15px;
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -145,7 +145,7 @@ const GlobalStyles = () => (
       gap: 8px;
       background: transparent;
       color: rgba(255,255,255,0.65);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 15px;
       font-weight: 500;
       padding: 16px 28px;
@@ -205,14 +205,14 @@ const GlobalStyles = () => (
     .text-amber { color: var(--amber); }
 
     /* Monospace */
-    .mono { font-family: 'DM Mono', monospace; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
 
     /* Section label */
     .section-label {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-family: 'DM Mono', monospace;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.12em;
@@ -297,7 +297,7 @@ const GlobalStyles = () => (
       background: rgba(37,99,235,0.1);
       border: 1px solid rgba(37,99,235,0.3);
       color: var(--amber);
-      font-family: 'DM Mono', monospace;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.1em;
@@ -330,7 +330,7 @@ const GlobalStyles = () => (
 
     /* Result metric */
     .result-metric {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: clamp(44px, 5vw, 68px);
       line-height: 1;
@@ -402,7 +402,7 @@ const GlobalStyles = () => (
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 20px;
       font-weight: 700;
       color: rgba(255,255,255,0.7);
@@ -460,7 +460,7 @@ const GlobalStyles = () => (
       border: 1px solid var(--border2);
       border-radius: 4px;
       padding: 14px 18px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 15px;
       color: #fff;
       outline: none;
@@ -621,7 +621,7 @@ function Hero() {
         <h1
           className="animate-fade-up delay-2"
           style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontSize: "clamp(40px, 7vw, 100px)",
             fontWeight: 800,
             lineHeight: 0.92,
@@ -713,7 +713,7 @@ function QuickProcessSection() {
         <div className="reveal" style={{ textAlign: "center", marginBottom: "56px" }}>
           <div className="section-label" style={{ justifyContent: "center", marginBottom: "16px" }}>How It Works</div>
           <h2 style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontSize: "clamp(36px, 5vw, 64px)",
             fontWeight: 800,
             letterSpacing: "-0.04em",
@@ -767,7 +767,7 @@ function QuickProcessSection() {
 
               {/* Step number */}
               <div style={{
-                fontFamily: "'DM Mono', monospace",
+                fontFamily: "'JetBrains Mono', monospace",
                 fontSize: "10px",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
@@ -776,7 +776,7 @@ function QuickProcessSection() {
               }}>Step {s.num}</div>
 
               <h3 style={{
-                fontFamily: "'Syne', sans-serif",
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontSize: "22px",
                 fontWeight: 700,
                 letterSpacing: "-0.02em",
@@ -812,7 +812,7 @@ function QuickProcessSection() {
           pointerEvents: "none",
         }} />
         <h2 style={{
-          fontFamily: "'Syne', sans-serif",
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
           fontSize: "clamp(28px, 4vw, 48px)",
           fontWeight: 800,
           letterSpacing: "-0.03em",
@@ -883,7 +883,7 @@ function ProblemSection() {
           <div className="reveal-l sticky-col" style={{ position: "sticky", top: "100px" }}>
             <div className="section-label" style={{ marginBottom: "20px" }}>The Problem</div>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: "clamp(42px, 5vw, 72px)",
               fontWeight: 800,
               letterSpacing: "-0.04em",
@@ -904,7 +904,7 @@ function ProblemSection() {
               borderRadius: "8px",
               padding: "20px 24px",
             }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--amber)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>Bottom Line</div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "var(--amber)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>Bottom Line</div>
               <div style={{ fontSize: "15px", fontWeight: 500, color: "#fff", lineHeight: 1.6 }}>
                 A bad website isn&#8217;t just embarrassing &#8212; it&#8217;s sending customers straight to your competitors.
               </div>
@@ -916,7 +916,7 @@ function ProblemSection() {
             {pains.map((p) => (
               <div key={p.num} className="pain-item">
                 <div style={{
-                  fontFamily: "'DM Mono', monospace",
+                  fontFamily: "'JetBrains Mono', monospace",
                   fontSize: "13px",
                   color: "var(--amber)",
                   flexShrink: 0,
@@ -925,7 +925,7 @@ function ProblemSection() {
                 }}>{p.num}</div>
                 <div style={{ flex: 1, position: "relative", zIndex: 1 }}>
                   <h3 style={{
-                    fontFamily: "'Syne', sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontSize: "18px",
                     fontWeight: 700,
                     color: "#fff",
@@ -938,7 +938,7 @@ function ProblemSection() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "6px",
-                    fontFamily: "'DM Mono', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                     fontSize: "11px",
                     color: "rgba(239,68,35,0.9)",
                     background: "rgba(239,68,35,0.08)",
@@ -1019,7 +1019,7 @@ function ServicesSection() {
           <div className="reveal">
             <div className="section-label" style={{ marginBottom: "16px" }}>02 / Services</div>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: "clamp(40px, 5vw, 72px)",
               fontWeight: 800,
               letterSpacing: "-0.04em",
@@ -1048,7 +1048,7 @@ function ServicesSection() {
               {s.badge && (
                 <div style={{
                   position: "absolute", top: "18px", right: "18px",
-                  fontFamily: "'DM Mono', monospace", fontSize: "9px", fontWeight: 500,
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: "9px", fontWeight: 500,
                   letterSpacing: "0.1em", textTransform: "uppercase",
                   background: "rgba(37,99,235,0.12)", color: "var(--amber)",
                   border: "1px solid rgba(37,99,235,0.25)",
@@ -1065,10 +1065,10 @@ function ServicesSection() {
                   fontSize: "22px",
                   transition: "background 0.25s, border-color 0.25s",
                 }} dangerouslySetInnerHTML={{ __html: s.icon }} />
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)" }}>{s.label}</div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)" }}>{s.label}</div>
               </div>
               <h3 style={{
-                fontFamily: "'Syne', sans-serif", fontSize: "20px", fontWeight: 700,
+                fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "20px", fontWeight: 700,
                 letterSpacing: "-0.02em", color: "#fff", marginBottom: "10px",
               }}>{s.name}</h3>
               <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.65, marginBottom: "20px" }}
@@ -1155,7 +1155,7 @@ function ResultsSection() {
         <div className="reveal" style={{ textAlign: "center", marginBottom: "72px" }}>
           <div className="section-label" style={{ marginBottom: "16px", justifyContent: "center" }}>03 / Results</div>
           <h2 style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontSize: "clamp(40px, 5vw, 72px)",
             fontWeight: 800,
             letterSpacing: "-0.04em",
@@ -1192,7 +1192,7 @@ function ResultsSection() {
                   gap: "16px",
                 }}>
                   <div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)", marginBottom: "10px" }}>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--amber)", marginBottom: "10px" }}>
                       {cs.industry}
                     </div>
                     <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>{cs.type}</div>
@@ -1201,7 +1201,7 @@ function ResultsSection() {
 
                 {/* Before */}
                 <div style={{ padding: "36px 32px", borderRight: "1px solid var(--border)" }}>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(239,68,35,0.8)", marginBottom: "16px" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(239,68,35,0.8)", marginBottom: "16px" }}>
                     &#9888; Before
                   </div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -1216,7 +1216,7 @@ function ResultsSection() {
 
                 {/* After */}
                 <div style={{ padding: "36px 32px", borderRight: "1px solid var(--border)" }}>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--green)", marginBottom: "16px" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--green)", marginBottom: "16px" }}>
                     &#10003; After Moore Digital
                   </div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -1233,12 +1233,12 @@ function ResultsSection() {
                 <div style={{ padding: "36px 36px", minWidth: "220px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                   <div>
                     <div className="result-metric">{cs.metric}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginTop: "6px" }}>{cs.metricLabel}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginTop: "6px" }}>{cs.metricLabel}</div>
                   </div>
                   <div style={{ marginTop: "24px" }}>
                     <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.65, fontStyle: "italic", marginBottom: "8px" }}
                       dangerouslySetInnerHTML={{ __html: "“" + cs.quote + "”" }} />
-                    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--amber)", letterSpacing: "0.04em" }}
+                    <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "var(--amber)", letterSpacing: "0.04em" }}
                       dangerouslySetInnerHTML={{ __html: cs.source }} />
                   </div>
                 </div>
@@ -1268,7 +1268,7 @@ function ResultsSection() {
               textAlign: "center",
             }}>
               <div className="result-metric" style={{ fontSize: "clamp(36px,4vw,52px)" }}>{s.n}</div>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.02em", textTransform: "uppercase", marginTop: "6px" }}>{s.label}</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.02em", textTransform: "uppercase", marginTop: "6px" }}>{s.label}</div>
               <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)", marginTop: "4px" }}>{s.sub}</div>
             </div>
           ))}
@@ -1314,7 +1314,7 @@ function ProcessSection() {
           <div className="reveal">
             <div className="section-label" style={{ marginBottom: "16px" }}>04 / Process</div>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: "clamp(40px, 5vw, 72px)",
               fontWeight: 800,
               letterSpacing: "-0.04em",
@@ -1354,16 +1354,16 @@ function ProcessSection() {
                 border: "1px solid var(--amber)",
                 borderRadius: "50%",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "'DM Mono', monospace", fontSize: "16px", fontWeight: 500,
+                fontFamily: "'JetBrains Mono', monospace", fontSize: "16px", fontWeight: 500,
                 color: "var(--amber)",
                 marginBottom: "28px",
                 boxShadow: "0 0 24px rgba(37,99,235,0.2)",
               }}>{s.n}</div>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(37,99,235,0.65)", marginBottom: "12px" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(37,99,235,0.65)", marginBottom: "12px" }}>
                 {s.time}
               </div>
               <h3 style={{
-                fontFamily: "'Syne', sans-serif", fontSize: "22px", fontWeight: 700,
+                fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "22px", fontWeight: 700,
                 letterSpacing: "-0.02em", color: "#fff", marginBottom: "12px",
               }}>{s.title}</h3>
               <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.65, marginBottom: "20px" }}
@@ -1413,7 +1413,7 @@ function CTASection() {
           </div>
 
           <h2 style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontSize: "clamp(48px, 7vw, 100px)",
             fontWeight: 800,
             letterSpacing: "-0.05em",
@@ -1442,7 +1442,7 @@ function CTASection() {
             </a>
           </div>
 
-          <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em" }}>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em" }}>
             No commitment &nbsp;&#183;&nbsp; Free initial audit &nbsp;&#183;&nbsp; Fixed price, no surprises
           </p>
         </div>
@@ -1494,7 +1494,7 @@ function ContactSection() {
           <div className="reveal-l">
             <div className="section-label" style={{ marginBottom: "20px" }}>05 / Contact</div>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: "clamp(40px, 4.5vw, 68px)",
               fontWeight: 800,
               letterSpacing: "-0.04em",
@@ -1532,7 +1532,7 @@ function ContactSection() {
                     fontSize: "16px", flexShrink: 0,
                   }} dangerouslySetInnerHTML={{ __html: c.icon }} />
                   <div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "var(--muted)", marginBottom: "2px" }}>{c.label}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "var(--muted)", marginBottom: "2px" }}>{c.label}</div>
                     <div style={{ fontSize: "15px", fontWeight: 500, color: "#fff" }}>{c.val}</div>
                   </div>
                 </div>
@@ -1555,7 +1555,7 @@ function ContactSection() {
             {sent ? (
               <div style={{ textAlign: "center", padding: "60px 0" }}>
                 <div style={{ fontSize: "48px", marginBottom: "20px" }}>&#9989;</div>
-                <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: "28px", fontWeight: 700, color: "#fff", marginBottom: "12px" }}>We Got It!</h3>
+                <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "28px", fontWeight: 700, color: "#fff", marginBottom: "12px" }}>We Got It!</h3>
                 <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>
                   Expect a response from us within 2 hours with a clear plan and fixed price. Keep an eye on your inbox.
                 </p>
@@ -1563,7 +1563,7 @@ function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit}>
                 <h3 style={{
-                  fontFamily: "'Syne', sans-serif", fontSize: "24px", fontWeight: 700,
+                  fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "24px", fontWeight: 700,
                   color: "#fff", letterSpacing: "-0.02em", marginBottom: "8px",
                 }}>Get a Free Website Audit</h3>
                 <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.4)", marginBottom: "36px" }}>
@@ -1572,28 +1572,28 @@ function ContactSection() {
 
                 <div className="form-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
                   <div>
-                    <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Name *</label>
+                    <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Name *</label>
                     <input type="text" required placeholder="Your Name" className="form-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
                   </div>
                   <div>
-                    <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Email *</label>
+                    <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Email *</label>
                     <input type="email" required placeholder="you@company.com" className="form-input" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
                   </div>
                 </div>
 
                 <div className="form-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
                   <div>
-                    <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Business Name</label>
+                    <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Business Name</label>
                     <input type="text" placeholder="Your Business" className="form-input" value={form.business} onChange={e => setForm({ ...form, business: e.target.value })} />
                   </div>
                   <div>
-                    <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Website URL *</label>
+                    <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>Website URL *</label>
                     <input type="url" required placeholder="https://yoursite.com" className="form-input" value={form.website} onChange={e => setForm({ ...form, website: e.target.value })} />
                   </div>
                 </div>
 
                 <div style={{ marginBottom: "16px" }}>
-                  <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>What Do You Need?</label>
+                  <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>What Do You Need?</label>
                   <select className="form-input" value={form.service} onChange={e => setForm({ ...form, service: e.target.value })} style={{ cursor: "pointer", appearance: "none" }}>
                     <option value="">Select a service...</option>
                     <option>Website Fix (24hr)</option>
@@ -1607,7 +1607,7 @@ function ContactSection() {
                 </div>
 
                 <div style={{ marginBottom: "28px" }}>
-                  <label style={{ display: "block", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>What&#8217;s the main problem?</label>
+                  <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.09em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "8px" }}>What&#8217;s the main problem?</label>
                   <textarea rows={3} placeholder="Describe what's broken or what you want to improve..." className="form-input" style={{ resize: "vertical", minHeight: "90px" }} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
                 </div>
 
@@ -1615,11 +1615,11 @@ function ContactSection() {
                   {loading ? "Sending…" : "Send My Free Audit Request ↗"}
                 </button>
                 {error && (
-                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "#f87171", textAlign: "center", marginTop: "12px", letterSpacing: "0.03em" }}>
+                  <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "#f87171", textAlign: "center", marginTop: "12px", letterSpacing: "0.03em" }}>
                     {error}
                   </p>
                 )}
-                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "14px", letterSpacing: "0.04em" }}>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "14px", letterSpacing: "0.04em" }}>
                   &#128274; 100% Private &nbsp;&#183;&nbsp; No Spam &nbsp;&#183;&nbsp; Reply Within 2 Hours
                 </p>
               </form>
@@ -1664,7 +1664,7 @@ function Footer() {
                   border: "1px solid var(--border2)",
                   borderRadius: "6px",
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  fontFamily: "'DM Mono', monospace", fontSize: "11px", fontWeight: 500,
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", fontWeight: 500,
                   color: "rgba(255,255,255,0.35)",
                   textDecoration: "none",
                   transition: "border-color 0.2s, color 0.2s",
@@ -1692,7 +1692,7 @@ function Footer() {
             },
           ].map((col) => (
             <div key={col.title}>
-              <h4 style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)", marginBottom: "16px" }}>{col.title}</h4>
+              <h4 style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)", marginBottom: "16px" }}>{col.title}</h4>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
                 {col.links.map((l) => (
                   <li key={l}>
@@ -1711,10 +1711,10 @@ function Footer() {
           display: "flex", alignItems: "center", justifyContent: "space-between",
           paddingTop: "28px", flexWrap: "wrap", gap: "12px",
         }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.03em" }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.03em" }}>
             &#169; 2025 Moore Digital Solutions. All rights reserved.
           </span>
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>
             <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--green)" }} />
             All systems operational &nbsp;&#183;&nbsp; Taking new projects
           </div>
