@@ -4,10 +4,19 @@ frontend:
     preBuild:
       commands:
         - nvm use 22
+        # Main site deps
         - npm ci
+        # Admin panel deps (separate package.json / node_modules)
+        - cd admin && npm ci && cd ..
     build:
       commands:
+        # Build main marketing site → dist/
         - npm run build
+        # Build admin panel → admin/dist/ (base: /admin/)
+        - cd admin && npm run build && cd ..
+        # Merge admin build into main dist under /admin/
+        - mkdir -p dist/admin
+        - cp -r admin/dist/. dist/admin/
   artifacts:
     baseDirectory: dist
     files:
@@ -15,3 +24,4 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
+      - admin/node_modules/**/*

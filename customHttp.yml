@@ -1,0 +1,32 @@
+customHeaders:
+  # ── Main site HTML — never cache ──────────────────────────────────────────
+  - pattern: '**/*.html'
+    headers:
+      - key: 'Cache-Control'
+        value: 'no-cache, no-store, must-revalidate'
+      - key: 'Pragma'
+        value: 'no-cache'
+      - key: 'Expires'
+        value: '0'
+
+  # ── Main site hashed assets — cache forever (content-addressed) ───────────
+  - pattern: '/assets/**'
+    headers:
+      - key: 'Cache-Control'
+        value: 'public, max-age=31536000, immutable'
+
+  # ── Admin panel hashed assets — cache forever (content-addressed) ─────────
+  - pattern: '/admin/assets/**'
+    headers:
+      - key: 'Cache-Control'
+        value: 'public, max-age=31536000, immutable'
+
+  # ── Admin panel HTML — never cache (ensures fresh index.html on every load) ─
+  - pattern: '/admin/**/*.html'
+    headers:
+      - key: 'Cache-Control'
+        value: 'no-cache, no-store, must-revalidate'
+      - key: 'Pragma'
+        value: 'no-cache'
+      - key: 'Expires'
+        value: '0'
