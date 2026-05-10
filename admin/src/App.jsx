@@ -1,11 +1,30 @@
+import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from './components/Sidebar.jsx'
+import Login   from './pages/Login.jsx'
 import { DEMO_MODE } from './lib/api.js'
+import { isAuthed, setAuthed, clearAuth, checkPassword } from './lib/auth.js'
 
 export default function App() {
+  const [authed, setAuthedState] = useState(isAuthed)
+
+  function handleLogin(password) {
+    if (!checkPassword(password)) return false
+    setAuthed()
+    setAuthedState(true)
+    return true
+  }
+
+  function handleLogout() {
+    clearAuth()
+    setAuthedState(false)
+  }
+
+  if (!authed) return <Login onLogin={handleLogin} />
+
   return (
     <div className="flex h-screen bg-slate-950 overflow-hidden">
-      <Sidebar />
+      <Sidebar onLogout={handleLogout} />
       <div className="flex-1 flex flex-col overflow-hidden">
         {DEMO_MODE && <DemoBanner />}
         <main className="flex-1 overflow-y-auto">
