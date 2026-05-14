@@ -71,7 +71,7 @@ export default function Leads() {
         actions={
           <>
             {newCount > 0 && (
-              <span className="badge bg-amber-500/10 text-amber-400 border-amber-500/20">
+              <span className="badge bg-amber-500/10 text-amber-400 border-amber-500/20 hidden sm:inline-flex">
                 {newCount} new
               </span>
             )}
@@ -80,25 +80,25 @@ export default function Leads() {
         }
       />
 
-      {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3 mb-5">
+      {/* Filters — stacked on mobile, row on md+ */}
+      <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 mb-5">
         <input
-          className="input max-w-56"
+          className="input col-span-2"
           placeholder="Search leads…"
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
-        <select className="select w-auto pr-8" value={clientFilter} onChange={e => setClientFilter(e.target.value)}>
+        <select className="select" value={clientFilter} onChange={e => setClientFilter(e.target.value)}>
           <option value="">All Clients</option>
           {allClients.map(c => (
             <option key={c.clientId} value={c.clientId}>{c.name}</option>
           ))}
         </select>
-        <select className="select w-auto pr-8" value={statusFilter} onChange={e => setStatusFilter(e.target.value)}>
+        <select className="select" value={statusFilter} onChange={e => setStatusFilter(e.target.value)}>
           <option value="">All Statuses</option>
           {LEAD_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
         </select>
-        <select className="select w-auto pr-8" value={sort} onChange={e => setSort(e.target.value)}>
+        <select className="select col-span-2 sm:col-span-1" value={sort} onChange={e => setSort(e.target.value)}>
           {SORT_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
         </select>
       </div>
@@ -109,88 +109,143 @@ export default function Leads() {
         </div>
       )}
 
-      {/* Table */}
-      <div className="card overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead className="border-b border-slate-800">
-              <tr>
-                <th className="th">Date</th>
-                <th className="th">Client</th>
-                <th className="th">Name</th>
-                <th className="th">Contact</th>
-                <th className="th">Source</th>
-                <th className="th">Status</th>
-                <th className="th">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {leads.length === 0 && !leadsRes.loading && (
-                <tr>
-                  <td colSpan="7">
-                    <EmptyState
-                      title="No leads found"
-                      description={search || clientFilter || statusFilter ? 'Try adjusting your filters.' : 'No leads have been submitted yet.'}
-                    />
-                  </td>
-                </tr>
-              )}
-              {leads.map(lead => {
-                const client = clientMap[lead.clientId]
-                return (
-                  <tr key={lead.leadId} className="table-row">
-                    <td className="td text-slate-400 text-xs whitespace-nowrap">
-                      {formatDateTime(lead.createdAt)}
-                    </td>
-                    <td className="td">
-                      {client ? (
-                        <div className="flex items-center gap-2">
-                          <div
-                            className="w-5 h-5 rounded flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0"
-                            style={{ backgroundColor: client.primaryColor || '#6366f1' }}
-                          >
-                            {client.name[0]}
-                          </div>
-                          <span className="text-slate-300 text-xs">{client.name}</span>
-                        </div>
-                      ) : (
-                        <span className="text-slate-500 text-xs font-mono">{lead.clientId}</span>
-                      )}
-                    </td>
-                    <td className="td font-medium text-slate-200">{lead.contactName || '—'}</td>
-                    <td className="td">
-                      <div className="text-slate-300">{lead.email}</div>
-                      <div className="text-slate-500 text-xs">{lead.phone}</div>
-                    </td>
-                    <td className="td text-slate-400 text-xs">{lead.source || '—'}</td>
-                    <td className="td">
-                      <LeadStatusBadge status={lead.status} />
-                    </td>
-                    <td className="td">
-                      <div className="flex items-center gap-1">
-                        <select
-                          className="bg-slate-800 border border-slate-700 rounded px-2 py-1 text-xs text-slate-300
-                                     focus:outline-none focus:border-indigo-500"
-                          value={lead.status}
-                          onChange={e => handleStatusChange(lead, e.target.value)}
-                        >
-                          {LEAD_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
-                        </select>
-                        <button
-                          className="btn-ghost text-xs px-2 py-1"
-                          onClick={() => setEditLead(editLead?.leadId === lead.leadId ? null : lead)}
-                        >
-                          {editLead?.leadId === lead.leadId ? 'Close' : 'Detail'}
-                        </button>
+      {leads.length === 0 && !leadsRes.loading && (
+        <EmptyState
+          title="No leads found"
+          description={search || clientFilter || statusFilter ? 'Try adjusting your filters.' : 'No leads have been submitted yet.'}
+        />
+      )}
+
+      {/* Mobile card list (hidden on md+) */}
+      {leads.length > 0 && (
+        <div className="md:hidden space-y-3">
+          {leads.map(lead => {
+            const client = clientMap[lead.clientId]
+            return (
+              <div key={lead.leadId} className="card p-4">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="min-w-0">
+                    <div className="font-medium text-slate-200 text-sm truncate">{lead.contactName || '—'}</div>
+                    <div className="text-xs text-slate-400 truncate">{lead.email}</div>
+                    {lead.phone && <div className="text-xs text-slate-500">{lead.phone}</div>}
+                  </div>
+                  <LeadStatusBadge status={lead.status} />
+                </div>
+
+                <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">
+                  {client && (
+                    <>
+                      <div
+                        className="w-4 h-4 rounded flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0"
+                        style={{ backgroundColor: client.primaryColor || '#6366f1' }}
+                      >
+                        {client.name[0]}
                       </div>
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+                      <span>{client.name}</span>
+                      <span>·</span>
+                    </>
+                  )}
+                  {lead.source && <span>{lead.source}</span>}
+                  {lead.source && <span>·</span>}
+                  <span>{formatDateTime(lead.createdAt)}</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <select
+                    className="bg-slate-800 border border-slate-700 rounded px-2 py-1.5 text-xs text-slate-300 flex-1
+                               focus:outline-none focus:border-indigo-500"
+                    value={lead.status}
+                    onChange={e => handleStatusChange(lead, e.target.value)}
+                  >
+                    {LEAD_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                  <button
+                    className="btn-ghost text-xs px-3 py-1.5 flex-shrink-0"
+                    onClick={() => setEditLead(editLead?.leadId === lead.leadId ? null : lead)}
+                  >
+                    Detail
+                  </button>
+                </div>
+              </div>
+            )
+          })}
         </div>
-      </div>
+      )}
+
+      {/* Desktop table (hidden on mobile) */}
+      {leads.length > 0 && (
+        <div className="card overflow-hidden hidden md:block">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="border-b border-slate-800">
+                <tr>
+                  <th className="th">Date</th>
+                  <th className="th">Client</th>
+                  <th className="th">Name</th>
+                  <th className="th">Contact</th>
+                  <th className="th">Source</th>
+                  <th className="th">Status</th>
+                  <th className="th">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leads.map(lead => {
+                  const client = clientMap[lead.clientId]
+                  return (
+                    <tr key={lead.leadId} className="table-row">
+                      <td className="td text-slate-400 text-xs whitespace-nowrap">
+                        {formatDateTime(lead.createdAt)}
+                      </td>
+                      <td className="td">
+                        {client ? (
+                          <div className="flex items-center gap-2">
+                            <div
+                              className="w-5 h-5 rounded flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0"
+                              style={{ backgroundColor: client.primaryColor || '#6366f1' }}
+                            >
+                              {client.name[0]}
+                            </div>
+                            <span className="text-slate-300 text-xs">{client.name}</span>
+                          </div>
+                        ) : (
+                          <span className="text-slate-500 text-xs font-mono">{lead.clientId}</span>
+                        )}
+                      </td>
+                      <td className="td font-medium text-slate-200">{lead.contactName || '—'}</td>
+                      <td className="td">
+                        <div className="text-slate-300">{lead.email}</div>
+                        <div className="text-slate-500 text-xs">{lead.phone}</div>
+                      </td>
+                      <td className="td text-slate-400 text-xs">{lead.source || '—'}</td>
+                      <td className="td">
+                        <LeadStatusBadge status={lead.status} />
+                      </td>
+                      <td className="td">
+                        <div className="flex items-center gap-1">
+                          <select
+                            className="bg-slate-800 border border-slate-700 rounded px-2 py-1 text-xs text-slate-300
+                                       focus:outline-none focus:border-indigo-500"
+                            value={lead.status}
+                            onChange={e => handleStatusChange(lead, e.target.value)}
+                          >
+                            {LEAD_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
+                          </select>
+                          <button
+                            className="btn-ghost text-xs px-2 py-1"
+                            onClick={() => setEditLead(editLead?.leadId === lead.leadId ? null : lead)}
+                          >
+                            {editLead?.leadId === lead.leadId ? 'Close' : 'Detail'}
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       {/* Lead Detail Panel */}
       {editLead && (
@@ -213,22 +268,22 @@ function LeadDetailPanel({ lead, client, onClose, onStatusChange }) {
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800">
-          <div>
-            <div className="text-base font-semibold text-slate-100">{lead.contactName}</div>
+        <div className="flex items-center justify-between px-4 py-4 border-b border-slate-800">
+          <div className="min-w-0 mr-3">
+            <div className="text-base font-semibold text-slate-100 truncate">{lead.contactName}</div>
             <div className="text-xs text-slate-500">{client?.name || lead.clientId}</div>
           </div>
-          <button className="btn-ghost text-xs" onClick={onClose}>Close ✕</button>
+          <button className="btn-ghost text-xs shrink-0" onClick={onClose}>✕ Close</button>
         </div>
 
         {/* Content */}
-        <div className="px-5 py-5 space-y-4">
+        <div className="px-4 py-5 space-y-4">
           <InfoSection title="Status">
             <div className="flex items-center gap-3">
               <LeadStatusBadge status={lead.status} />
               <select
-                className="bg-slate-800 border border-slate-700 rounded px-2 py-1 text-xs text-slate-300
-                           focus:outline-none focus:border-indigo-500"
+                className="bg-slate-800 border border-slate-700 rounded px-2 py-1.5 text-xs text-slate-300
+                           focus:outline-none focus:border-indigo-500 flex-1"
                 value={lead.status}
                 onChange={e => onStatusChange(lead, e.target.value)}
               >
@@ -238,10 +293,10 @@ function LeadDetailPanel({ lead, client, onClose, onStatusChange }) {
           </InfoSection>
 
           <InfoSection title="Contact">
-            <div className="space-y-1 text-sm text-slate-300">
-              <div><span className="text-slate-500 w-16 inline-block">Email</span>{lead.email || '—'}</div>
-              <div><span className="text-slate-500 w-16 inline-block">Phone</span>{lead.phone || '—'}</div>
-              <div><span className="text-slate-500 w-16 inline-block">Source</span>{lead.source || '—'}</div>
+            <div className="space-y-2 text-sm text-slate-300">
+              <div className="flex gap-2"><span className="text-slate-500 w-14 shrink-0">Email</span><span className="break-all">{lead.email || '—'}</span></div>
+              <div className="flex gap-2"><span className="text-slate-500 w-14 shrink-0">Phone</span>{lead.phone || '—'}</div>
+              <div className="flex gap-2"><span className="text-slate-500 w-14 shrink-0">Source</span>{lead.source || '—'}</div>
             </div>
           </InfoSection>
 

@@ -9,53 +9,83 @@ const NAV = [
   { to: '/settings',    label: 'Settings',    icon: IconSettings    },
 ]
 
-export default function Sidebar({ onLogout }) {
+export default function Sidebar({ onLogout, isOpen, onClose }) {
   return (
-    <aside className="w-56 flex-shrink-0 bg-slate-900 border-r border-slate-800 flex flex-col h-full">
-      {/* Logo */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b border-slate-800">
-        <div className="w-8 h-8 rounded-md bg-indigo-600 flex items-center justify-center flex-shrink-0">
-          <span className="text-white text-xs font-bold tracking-tight">MDS</span>
-        </div>
-        <div>
-          <div className="text-sm font-semibold text-slate-100 leading-none">Control Panel</div>
-          <div className="text-xs text-slate-500 mt-0.5">Moore Digital Solutions</div>
-        </div>
-      </div>
+    <>
+      {/* Mobile backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/60 md:hidden"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
 
-      {/* Nav */}
-      <nav className="flex-1 px-2 py-4 space-y-0.5">
-        {NAV.map(({ to, label, icon: Icon }) => (
-          <NavLink
-            key={to}
-            to={to}
-            end={to === '/'}
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-indigo-600/20 text-indigo-300'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
-              }`
-            }
+      <aside
+        className={`
+          fixed inset-y-0 left-0 z-50 w-64
+          flex flex-col bg-slate-900 border-r border-slate-800
+          transition-transform duration-200 ease-in-out
+          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+          md:static md:w-56 md:translate-x-0 md:flex-shrink-0 md:transition-none
+        `}
+      >
+        {/* Logo */}
+        <div className="flex items-center gap-3 px-4 py-5 border-b border-slate-800">
+          <div className="w-8 h-8 rounded-md bg-indigo-600 flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs font-bold tracking-tight">MDS</span>
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="text-sm font-semibold text-slate-100 leading-none">Control Panel</div>
+            <div className="text-xs text-slate-500 mt-0.5">Moore Digital Solutions</div>
+          </div>
+          {/* Mobile close */}
+          <button
+            onClick={onClose}
+            className="md:hidden text-slate-500 hover:text-slate-300 p-1 -mr-1"
+            aria-label="Close menu"
           >
-            <Icon className="w-4 h-4 flex-shrink-0" />
-            {label}
-          </NavLink>
-        ))}
-      </nav>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-      {/* Footer */}
-      <div className="px-4 py-4 border-t border-slate-800 space-y-3">
-        <BuildInfo />
-        <button
-          onClick={onLogout}
-          className="flex items-center gap-2 w-full px-2 py-1.5 rounded-md text-xs text-slate-500 hover:text-slate-300 hover:bg-slate-800 transition-colors"
-        >
-          <IconLogout className="w-3.5 h-3.5 flex-shrink-0" />
-          Sign out
-        </button>
-      </div>
-    </aside>
+        {/* Nav */}
+        <nav className="flex-1 px-2 py-4 space-y-0.5 overflow-y-auto">
+          {NAV.map(({ to, label, icon: Icon }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === '/'}
+              onClick={onClose}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                  isActive
+                    ? 'bg-indigo-600/20 text-indigo-300'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                }`
+              }
+            >
+              <Icon className="w-4 h-4 flex-shrink-0" />
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+
+        {/* Footer */}
+        <div className="px-4 py-4 border-t border-slate-800 space-y-3">
+          <BuildInfo />
+          <button
+            onClick={onLogout}
+            className="flex items-center gap-2 w-full px-2 py-1.5 rounded-md text-xs text-slate-500 hover:text-slate-300 hover:bg-slate-800 transition-colors"
+          >
+            <IconLogout className="w-3.5 h-3.5 flex-shrink-0" />
+            Sign out
+          </button>
+        </div>
+      </aside>
+    </>
   )
 }
 

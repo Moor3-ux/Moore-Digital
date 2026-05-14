@@ -100,18 +100,18 @@ export default function Overview() {
               const clientLeads = allLeads.filter(l => l.clientId === client.clientId)
               const newCount = clientLeads.filter(l => l.status === 'New').length
               return (
-                <div key={client.clientId} className="flex items-center justify-between px-5 py-3 hover:bg-slate-800/30 transition-colors">
+                <div key={client.clientId} className="flex items-center justify-between px-4 py-3 hover:bg-slate-800/30 transition-colors gap-2">
                   <div className="flex items-center gap-3 min-w-0">
                     <InitialsBadge name={client.name} color={client.primaryColor} />
                     <div className="min-w-0">
                       <div className="text-sm font-medium text-slate-200 truncate">{client.name}</div>
-                      <div className="text-xs text-slate-500">{client.domain}</div>
+                      <div className="text-xs text-slate-500 truncate">{client.domain}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 flex-shrink-0 ml-3">
+                  <div className="flex items-center gap-2 flex-shrink-0">
                     <ClientStatusBadge status={client.status} />
                     {dep && <HealthIndicator status={dep.apiHealth} />}
-                    <span className="text-xs text-slate-500">
+                    <span className="text-xs text-slate-500 hidden sm:inline">
                       {clientLeads.length} leads{newCount > 0 ? ` · ${newCount} new` : ''}
                     </span>
                   </div>
